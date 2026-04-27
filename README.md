@@ -16,6 +16,7 @@ It requires the model file `crypto_ai_brain.keras` in the app root (same folder 
 - `requirements.txt` for dependency installation
 - `Procfile` with production start command:
   - `web: gunicorn --bind 0.0.0.0:${PORT:-5000} server:app`
+  - (`$PORT` is injected by most hosts; this Procfile adds a local fallback.)
 - `runtime.txt` for Python version
 
 ## Local run

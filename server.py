@@ -94,5 +94,5 @@ def predict_crypto():
 if __name__ == '__main__':
     port = int(os.getenv("PORT", "5000"))
     host = os.getenv("HOST", "0.0.0.0")
-    debug = os.getenv("FLASK_DEBUG", "false").lower() == "true"
+    debug = os.getenv("FLASK_DEBUG", "false").lower() in {"true", "1", "yes"}
     app.run(host=host, port=port, debug=debug)
