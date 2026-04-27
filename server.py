@@ -1,3 +1,6 @@
+import os
+from pathlib import Path
+
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 import yfinance as yf
@@ -13,7 +16,8 @@ CORS(app)
 # Load the AI Brain once when the server turns on
 print("Loading AI Brain... Please wait.")
 try:
-    model = load_model("crypto_ai_brain.keras")
+    model_path = Path(__file__).resolve().parent / "crypto_ai_brain.keras"
+    model = load_model(model_path)
     print("✅ AI Brain loaded successfully!")
 except Exception as e:
     print("❌ Error loading model! Make sure 'crypto_ai_brain.keras' is in the folder.")
@@ -88,4 +92,7 @@ def predict_crypto():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.getenv("PORT", "5000"))
+    host = os.getenv("HOST", "0.0.0.0")
+    debug = os.getenv("FLASK_DEBUG", "false").lower() == "true"
+    app.run(host=host, port=port, debug=debug)
