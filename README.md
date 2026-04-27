@@ -9,7 +9,7 @@ It requires the model file `crypto_ai_brain.keras` in the app root (same folder 
 
 ## Runtime
 
-- Python `3.10` or `3.11` (configured as `3.11.9` in `runtime.txt`)
+- Python `3.11.9` (configured in `runtime.txt`)
 
 ## Deploy files in this repo
 

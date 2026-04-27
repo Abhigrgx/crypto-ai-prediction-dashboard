@@ -17,10 +17,10 @@ CORS(app)
 print("Loading AI Brain... Please wait.")
 try:
     model_path = Path(__file__).resolve().parent / "crypto_ai_brain.keras"
-    model = load_model(model_path)
+    model = load_model(str(model_path))
     print("✅ AI Brain loaded successfully!")
 except Exception as e:
-    print("❌ Error loading model! Make sure 'crypto_ai_brain.keras' is in the folder.")
+    print(f"❌ Error loading model at '{model_path}'! Ensure it is in the same directory as server.py.")
     model = None
 
 @app.route('/')
